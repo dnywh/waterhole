@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterhole</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li:not(:last-of-type) {
+            padding-bottom: 3rem;
+            border-bottom: 1px solid lightgrey;
+            margin-bottom: 4rem;
+        }
+
+        li img {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        li p:last-of-type {
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>waterhole.app</h1>
+    <p>Our most recent thirty sightings:</p>
+    <ul id="feed"></ul>
+    <script src="app.js"></script>
+</body>
+</html>
