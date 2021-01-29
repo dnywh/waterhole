@@ -25,11 +25,22 @@
         li p:last-of-type {
             color: grey;
         }
+
+        #loader,
+        #intro {
+            display: none;
+        }
+        
+        #loader.active,
+        #intro.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>waterhole.app</h1>
-    <p>Our most recent thirty sightings:</p>
+    <p id="loader" class="active">Summoning wildlife to the waterhole...</p>
+    <p id="intro">Our most recent thirty sightings:</p>
     <ul id="feed"></ul>
     <script src="app.js"></script>
 </body>

@@ -1,3 +1,5 @@
+const loader = document.querySelector("#loader");
+const intro = document.querySelector("#intro");
 const feed = document.querySelector("#feed");
 const usersInFeed = "dannywhite%2Clexilombari%2Cnicole-gonzalez"
 
@@ -7,6 +9,11 @@ async function getData() {
     const data = await response.json();
     const feedData = data.results;
 
+    // Remove loader, show intro
+    loader.classList.remove("active");
+    intro.classList.add("active");
+
+    // Map through each item
     feedData.map(item => {
         // console.log(item);
 
@@ -33,9 +40,23 @@ async function getData() {
 
         // Add data to elements
         feedItemImg.setAttribute('src', `https://static.inaturalist.org/photos/${item.photos[0].id}/medium.jpg`);
-        feedItemTextLink.textContent = item.species_guess;
+        if (item.taxon.preferred_common_name) {
+            feedItemTitle.textContent = item.taxon.preferred_common_name;
+        } else if (item.taxon.name) {
+            feedItemTitle.textContent = item.taxon.name;
+        } else if (item.species_guess) {
+            feedItemTitle.textContent = item.species_guess;
+        } else {
+            feedItemTitle.textContent = "Unknown";
+        }
         item.user.name ? feedItemAuthor.textContent = item.user.name : feedItemAuthor.textContent = item.user.login;
-        feedItemTimestamp.textContent = item.created_at_details.date;
+        
+
+        if (item.created_at_details.date !== item.observed_on_details.date) {
+            feedItemTimestamp.textContent = `${item.created_at_details.date} (Photo taken ${item.observed_on_details.date})`
+        } else {
+            feedItemTimestamp.textContent = item.created_at_details.date;
+        }
 
         // Add elements to document
         feedItemChildren.map(child => feedItem.appendChild(child));
