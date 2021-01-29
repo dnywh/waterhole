@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waterhole</title>
     <style>
-        ul {
+        ul#feed {
             list-style: none;
-            margin: 0;
+            margin: 3rem 0 0 0;
             padding: 0;
         }
 
-        li:not(:last-of-type) {
+        ul#feed li:not(:last-of-type) {
+            margin-bottom: 4rem;
             padding-bottom: 3rem;
             border-bottom: 1px solid lightgrey;
-            margin-bottom: 4rem;
         }
 
-        li img {
+        ul#feed li img {
             width: 100%;
             max-width: 640px;
         }
 
-        li p:last-of-type {
+        ul#feed li p:last-of-type {
             color: grey;
         }
 
         #loader,
-        #intro {
+        #intro{
             display: none;
         }
         
@@ -35,13 +35,30 @@
         #intro.active {
             display: block;
         }
+
+        footer {
+            margin-top: 9rem;
+            padding-top: 3rem;
+            border-top: 1px solid lightgrey;
+            padding-bottom: 3rem;
+        }
     </style>
 </head>
 <body>
     <h1>waterhole.app</h1>
-    <p id="loader" class="active">Summoning wildlife to the waterhole...</p>
-    <p id="intro">Our most recent thirty sightings:</p>
-    <ul id="feed"></ul>
+
+    <article>
+        <p id="loader" class="active">Summoning wildlife to the waterhole...</p>
+        <p id="intro">Our 30 most recent sightings:</p>
+        <ul id="feed"></ul>
+    </article>
+
+    <footer>
+        <p>This is an experiment by <a href="http://dannywhite.org" target="_blank" rel="noopener noreferrer">Danny White</a>. Think of it as my personal iNaturalist feed. It currently follows these users:</p>
+        <ul id="users"></ul>
+        <p>The code is available on <a href="https://github.com/dnywh/waterhole" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
