@@ -3,7 +3,8 @@ const intro = document.querySelector("#intro");
 const feed = document.querySelector("#feed");
 const users = document.querySelector("#users");
 
-const followingList = ["dannywhite", "lexilombari", "nicole-gonzalez"];
+const followingList = ["dannywhite", "lexilombari", "nicole-gonzalez", "steve964"];
+
 // Show following list on page
 followingList.map(item => {
     const listItem = document.createElement("li");
